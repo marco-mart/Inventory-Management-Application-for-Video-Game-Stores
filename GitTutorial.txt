@@ -1,0 +1,61 @@
+
+DO NOT, FOR THE LOVE OF GOD, PUSH DIRECTLY TO MAIN BRANCH
+---------------------------------------------------------
+
+Main will act as our "PRODUCTION"
+
+
+Do not push without having tested your code, and make sure that the APPLICATION runs.
+
+
+Do not be afraid to break stuff, just make sure it isn't the MAIN branch.
+
+
+
+Look at the branches
+--------------------
+git branch
+
+
+Update your branch
+------------------
+git pull
+
+
+Create new branch:
+-------------------
+git checkout -b branchName
+
+
+Switch to branch:
+-----------------
+git checkout branchName
+
+
+Delete branch:
+--------------
+git branch -d branchName
+
+
+
+PUSHING
+-------
+
+You push to the branch that you have created by doing:
+-------------------------------------------------------
+
+git push origin branchName
+
+
+Then on Github.com, you create a pull request to "pull" your changes into the main branch. Someone will
+look at the pull request, fix any conflicts with main, and then merge your branch with main.
+
+After this is done, your branch will be deleted.
+
+To delete your now done branch on your local machine make sure you are on the main branch,
+then do:
+
+git branch -d oldBranchName
+
+
+
