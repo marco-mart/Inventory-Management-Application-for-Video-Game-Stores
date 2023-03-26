@@ -1,1 +1,6 @@
+use game_store;
 
+INSERT INTO game
+(`game_id`, `title`, `esrb_rating`, `description`, `price`, `studio`, `quantity`)
+VALUES
+(1,"Minecraft","Teen","Dont mine at night", 9.99, "Mojang", 20);
