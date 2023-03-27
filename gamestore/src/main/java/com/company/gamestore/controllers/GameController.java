@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +23,7 @@ public class GameController {
 
     @PostMapping("/games") //Create a game
     @ResponseStatus(HttpStatus.CREATED)
-    public void createGame(@RequestBody Game game){ repo.save(game);}
+    public void createGame(@RequestBody @Valid Game game){ repo.save(game);}
 
     @GetMapping("/games/{id}") //Get game by Id
     @ResponseStatus(HttpStatus.OK)
@@ -42,7 +43,7 @@ public class GameController {
 
     @PutMapping("/games") //Update a game
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateGame(@RequestBody Game game){repo.save(game);}
+    public void updateGame(@RequestBody @Valid Game game){repo.save(game);}
 
     @DeleteMapping("/games/{id}") //Delete a game by id
     @ResponseStatus(HttpStatus.NO_CONTENT)
