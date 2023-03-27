@@ -3,8 +3,7 @@ package com.company.gamestore.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -34,6 +33,9 @@ public class Game  implements Serializable {
     private String description;
 
     @NotNull
+    @DecimalMax("999.99")
+    @DecimalMin("0")
+    @Digits(integer=5, fraction=2)
     private BigDecimal price;
 
     @Size(max = 50)
