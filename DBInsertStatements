@@ -4,3 +4,13 @@ INSERT INTO game
 (`game_id`, `title`, `esrb_rating`, `description`, `price`, `studio`, `quantity`)
 VALUES
 (1,"Minecraft","Teen","Dont mine at night", 9.99, "Mojang", 20);
+
+INSERT INTO game
+(`game_id`, `title`, `esrb_rating`, `description`, `price`, `studio`, `quantity`)
+VALUES
+(2,"Valorant","Teen","5v5 team based", 12.99, "Riot", 100);
+
+INSERT INTO game
+(`game_id`, `title`, `esrb_rating`, `description`, `price`, `studio`, `quantity`)
+VALUES
+(3,"NBA2K 2024","Everyone","NBA", 60.00, "Ubisoft", 2);
