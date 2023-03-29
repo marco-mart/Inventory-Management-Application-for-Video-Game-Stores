@@ -3,6 +3,7 @@ package com.company.gamestore.controllers;
 import com.company.gamestore.models.Game;
 import com.company.gamestore.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
@@ -18,15 +19,36 @@ public class GraphController
     @QueryMapping
     public List<Game> findAllGames()
     {
-        List<Game> games = gameRepository.findAll();
-        return !games.isEmpty() ? games : null;
+        return gameRepository.findAll();
     }
 
+    @QueryMapping
+    public Game findGameById(@Argument Integer id)
+    {
+        Optional<Game> game = gameRepository.findById(id);
+        return game.isPresent() ? game.get() : null;
+    }
 
+    @QueryMapping
+    public List<Game> findGamesByTitle(@Argument String title)
+    {
+        /**
+         * Note: Games could have the same name. Example:
+         *       A revamp of an old game like "Tomb Raider" (1996)
+         *       and "Tomb Raider" (2013)
+         * */
+        return gameRepository.findAllByTitle(title);
+    }
 
-//    findAllGames(): [Game]
-//    findGameById(id: Int): Game
-//findGameByTitle(title: String): Game
-//findGamesByEsrbRating(esrb: String): [Game]
-//    findGamesByStudio(studio: String): [Game]
+    @QueryMapping
+    public List<Game> findGamesByEsrbRating(@Argument String esrb)
+    {
+        return gameRepository.findAllByEsrbRating(esrb);
+    }
+
+    @QueryMapping
+    public List<Game> findGamesByStudio(@Argument String studio)
+    {
+        return gameRepository.findAllByStudio(studio);
+    }
 }

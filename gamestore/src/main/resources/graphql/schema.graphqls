@@ -13,26 +13,30 @@ type Query {
 
     findAllGames: [Game]
     findGameById(id: Int): Game
-    findGameByTitle(title: String): Game
+    findGamesByTitle(title: String): [Game]
     findGamesByEsrbRating(esrb: String): [Game]
     findGamesByStudio(studio: String): [Game]
 }
 
-#Get all Games
-#
-#Get a Game by ID
-#
-#Get a Game by Title
-#
-#Get a Game by ESRB rating
-#
-#Get a Game by Studio
 #
 #Get all Consoles
 #
 #Get a Console by ID
 #
 #Get a Console by Manufacturer
+
+#+---------------+--------------+------+-----+---------+----------------+
+#| Field         | Type         | Null | Key | Default | Extra          |
+#+---------------+--------------+------+-----+---------+----------------+
+#| console_id    | int          | NO   | PRI | NULL    | auto_increment |
+#| model         | varchar(50)  | NO   |     | NULL    |                |
+#| manufacturer  | varchar(50)  | NO   |     | NULL    |                |
+#| memory_amount | varchar(20)  | YES  |     | NULL    |                |
+#| processor     | varchar(20)  | YES  |     | NULL    |                |
+#| price         | decimal(5,2) | NO   |     | NULL    |                |
+#| quantity      | int          | NO   |     | NULL    |                |
+#+---------------+--------------+------+-----+---------+----------------+
+
 
 
 #+-------------+--------------+------+-----+---------+----------------+
