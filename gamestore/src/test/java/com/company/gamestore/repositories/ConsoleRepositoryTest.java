@@ -34,7 +34,7 @@ public class ConsoleRepositoryTest {
         Console console = new Console();
         console.setModel("PlayStation 5");
         console.setManufacturer("Sony");
-        console.setMemory_amount("500 gb");
+        console.setMemoryAmount("500 gb");
         console.setProcessor("Intel i9");
         BigDecimal price = new BigDecimal("500.00");
         console.setPrice(price);
@@ -58,7 +58,7 @@ public class ConsoleRepositoryTest {
         Console console = new Console();
         console.setModel("PlayStation 5");
         console.setManufacturer("Sony");
-        console.setMemory_amount("500 gb");
+        console.setMemoryAmount("500 gb");
         console.setProcessor("Intel i9");
         BigDecimal price = new BigDecimal("500.00");
         console.setPrice(price);
@@ -81,7 +81,7 @@ public class ConsoleRepositoryTest {
         Console console = new Console();
         console.setModel("PlayStation 5");
         console.setManufacturer("Sony");
-        console.setMemory_amount("500 gb");
+        console.setMemoryAmount("500 gb");
         console.setProcessor("Intel i9");
         BigDecimal price = new BigDecimal("500.00");
         console.setPrice(price);
@@ -103,7 +103,7 @@ public class ConsoleRepositoryTest {
         Console console = new Console();
         console.setModel("PlayStation 5");
         console.setManufacturer("Sony");
-        console.setMemory_amount("500 gb");
+        console.setMemoryAmount("500 gb");
         console.setProcessor("Intel i9");
         BigDecimal price = new BigDecimal("500.00");
         console.setPrice(price);
@@ -127,7 +127,7 @@ public class ConsoleRepositoryTest {
         Console console = new Console();
         console.setModel("PlayStation 5");
         console.setManufacturer("Sony");
-        console.setMemory_amount("500 gb");
+        console.setMemoryAmount("500 gb");
         console.setProcessor("Intel i9");
         BigDecimal price = new BigDecimal("500.00");
         console.setPrice(price);
@@ -151,7 +151,7 @@ public class ConsoleRepositoryTest {
         Console console = new Console();
         console.setModel("PlayStation 5");
         console.setManufacturer("Sony");
-        console.setMemory_amount("500 gb");
+        console.setMemoryAmount("500 gb");
         console.setProcessor("Intel i9");
         BigDecimal price = new BigDecimal("500.00");
         console.setPrice(price);

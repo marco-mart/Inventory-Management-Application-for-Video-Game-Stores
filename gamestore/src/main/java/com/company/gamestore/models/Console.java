@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Console implements Serializable{
 
     @Id
-    @Column
+    @Column(name = "console_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -29,7 +29,7 @@ public class Console implements Serializable{
 
     @Size(max = 20)
     @NotNull
-    private String memory_amount;
+    private String memoryAmount;
 
     @Size(max = 20)
     @NotNull
@@ -68,12 +68,12 @@ public class Console implements Serializable{
         this.manufacturer = manufacturer;
     }
 
-    public String getMemory_amount() {
-        return memory_amount;
+    public String getMemoryAmount() {
+        return memoryAmount;
     }
 
-    public void setMemory_amount(String memory_amount) {
-        this.memory_amount = memory_amount;
+    public void setMemoryAmount(String memoryAmount) {
+        this.memoryAmount = memoryAmount;
     }
 
     public String getProcessor() {
@@ -105,12 +105,12 @@ public class Console implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Console that = (Console) o;
-        return id == that.id && quantity == that.quantity && Objects.equals(model, that.model) && Objects.equals(manufacturer, that.manufacturer) && Objects.equals(memory_amount, that.memory_amount) && Objects.equals(processor, that.processor) && Objects.equals(price, that.price);
+        return id == that.id && quantity == that.quantity && Objects.equals(model, that.model) && Objects.equals(manufacturer, that.manufacturer) && Objects.equals(memoryAmount, that.memoryAmount) && Objects.equals(processor, that.processor) && Objects.equals(price, that.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, model, manufacturer, memory_amount, processor, price, quantity);
+        return Objects.hash(id, model, manufacturer, memoryAmount, processor, price, quantity);
     }
 }
 
