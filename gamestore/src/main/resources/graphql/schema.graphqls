@@ -1,4 +1,3 @@
-
 type Game {
     id: Int!
     title: String!
@@ -9,13 +8,29 @@ type Game {
     quantity: Int!
 }
 
+type Console {
+    id: Int!
+    model: String!
+    manufacturer: String!
+    memoryAmount: String!
+    processor: String!
+    price: Float!
+    quantity: Int!
+}
+
 type Query {
 
+    # Game queries
     findAllGames: [Game]
     findGameById(id: Int): Game
     findGamesByTitle(title: String): [Game]
     findGamesByEsrbRating(esrb: String): [Game]
     findGamesByStudio(studio: String): [Game]
+
+    # Console queries
+    findAllConsoles: [Console]
+    findConsoleById(id: Int): Console
+    findConsolesByManufacturer(manufacturer: String): [Console]
 }
 
 #
@@ -24,29 +39,3 @@ type Query {
 #Get a Console by ID
 #
 #Get a Console by Manufacturer
-
-#+---------------+--------------+------+-----+---------+----------------+
-#| Field         | Type         | Null | Key | Default | Extra          |
-#+---------------+--------------+------+-----+---------+----------------+
-#| console_id    | int          | NO   | PRI | NULL    | auto_increment |
-#| model         | varchar(50)  | NO   |     | NULL    |                |
-#| manufacturer  | varchar(50)  | NO   |     | NULL    |                |
-#| memory_amount | varchar(20)  | YES  |     | NULL    |                |
-#| processor     | varchar(20)  | YES  |     | NULL    |                |
-#| price         | decimal(5,2) | NO   |     | NULL    |                |
-#| quantity      | int          | NO   |     | NULL    |                |
-#+---------------+--------------+------+-----+---------+----------------+
-
-
-
-#+-------------+--------------+------+-----+---------+----------------+
-#| Field       | Type         | Null | Key | Default | Extra          |
-#+-------------+--------------+------+-----+---------+----------------+
-#| game_id     | int          | NO   | PRI | NULL    | auto_increment |
-#| title       | varchar(50)  | NO   |     | NULL    |                |
-#| esrb_rating | varchar(50)  | NO   |     | NULL    |                |
-#| description | varchar(255) | NO   |     | NULL    |                |
-#| price       | decimal(5,2) | NO   |     | NULL    |                |
-#| studio      | varchar(50)  | NO   |     | NULL    |                |
-#| quantity    | int          | YES  |     | NULL    |                |
-#+-------------+--------------+------+-----+---------+----------------+

@@ -16,6 +16,11 @@ public class GraphController
     @Autowired
     GameRepository gameRepository;
 
+
+
+    /**
+     * Game queries
+     * */
     @QueryMapping
     public List<Game> findAllGames()
     {
@@ -51,4 +56,15 @@ public class GraphController
     {
         return gameRepository.findAllByStudio(studio);
     }
+
+
+    /**
+     * Console queries
+     * */
+
+
+
+//    findAllConsoles: [Console]
+//    findConsoleById(id: Int): Console
+//findConsolesByManufacturer(manufacturer: String): [Console]
 }
