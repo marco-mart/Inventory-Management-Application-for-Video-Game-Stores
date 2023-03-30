@@ -5,15 +5,15 @@ type Game {
     description: String!
     price: Float!
     studio: String!
-    quantity: Int!
+    quantity: Int
 }
 
 type Console {
     id: Int!
     model: String!
     manufacturer: String!
-    memoryAmount: String!
-    processor: String!
+    memoryAmount: String
+    processor: String
     price: Float!
     quantity: Int!
 }
@@ -32,10 +32,3 @@ type Query {
     findConsoleById(id: Int): Console
     findConsolesByManufacturer(manufacturer: String): [Console]
 }
-
-#
-#Get all Consoles
-#
-#Get a Console by ID
-#
-#Get a Console by Manufacturer
