@@ -32,7 +32,7 @@ public class ConsoleController {
 
     @GetMapping("/consoles")
     @ResponseStatus(HttpStatus.OK)
-    public List<Console> getAllInvoice() {
+    public List<Console> getAllConsole() {
         Optional<List<Console>> consoles = Optional.of(consoleRepository.findAll());
         return consoles.isPresent() ? consoles.get() : null;
     }
@@ -46,8 +46,8 @@ public class ConsoleController {
 
     @PostMapping("/consoles")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createConsole(@RequestBody @Valid Console console) {
-        consoleRepository.save(console);
+    public Console createConsole(@RequestBody @Valid Console console) {
+        return consoleRepository.save(console);
     }
 
     @PutMapping("/consoles/{id}")
