@@ -101,7 +101,7 @@ public class GameControllerTest {
     }
 
     @Test
-    public void shouldGetBookById() throws Exception {
+    public void shouldGetGameById() throws Exception {
         // ARRANGE
 
         // Because we test the repository elsewhere, we only test for the correct response.
@@ -116,7 +116,7 @@ public class GameControllerTest {
     }
 
     @Test
-    public void shouldGetAllBooks () throws Exception {
+    public void shouldGetAllGames () throws Exception {
         // ARRANGE
 
         // Because we test the repository elsewhere, we only test for the correct response.
@@ -131,7 +131,7 @@ public class GameControllerTest {
     }
 
     @Test
-    public void shouldGetAllBooksByStudio () throws Exception {
+    public void shouldGetAllGamesByStudio () throws Exception {
         // ARRANGE
 
         // Because we test the repository elsewhere, we only test for the correct response.
@@ -146,7 +146,7 @@ public class GameControllerTest {
     }
 
     @Test
-    public void shouldGetAllBooksByEsrbRating () throws Exception {
+    public void shouldGetAllGamesByEsrbRating () throws Exception {
         // ARRANGE
 
         // Because we test the repository elsewhere, we only test for the correct response.
@@ -161,7 +161,7 @@ public class GameControllerTest {
     }
 
     @Test
-    public void shouldGetAllBooksByTitle () throws Exception {
+    public void shouldGetAllGamesByTitle () throws Exception {
         // ARRANGE
 
         // Because we test the repository elsewhere, we only test for the correct response.
