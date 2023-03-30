@@ -2,15 +2,15 @@ package com.company.gamestore.models;
 
 import javax.persistence.*;
 
+import  javax.persistence.Entity;
 import javax.validation.constraints.*;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import nonapi.io.github.classgraph.json.Id;
+
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -18,8 +18,8 @@ import nonapi.io.github.classgraph.json.Id;
 
 public class Tshirt {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tshirt_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotNull
@@ -116,4 +116,5 @@ public class Tshirt {
                 '}';
     }
 }
+
 
