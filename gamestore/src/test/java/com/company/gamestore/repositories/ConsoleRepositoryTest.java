@@ -97,7 +97,7 @@ public class ConsoleRepositoryTest {
     }
 
     @Test
-    public void shouldUpdateAGame () throws Exception {
+    public void shouldUpdateAConsole() throws Exception {
 
 //        Arrange
         Console console = new Console();

@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table
+@Table(name = "console")
 public class Console implements Serializable{
 
     @Id
@@ -28,11 +28,10 @@ public class Console implements Serializable{
     private String manufacturer;
 
     @Size(max = 20)
-    @NotNull
+    @Column(name = "memory_amount")
     private String memoryAmount;
 
     @Size(max = 20)
-    @NotNull
     private String processor;
 
     @NotNull
