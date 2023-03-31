@@ -4,7 +4,6 @@ import com.company.gamestore.models.Tshirt;
 import com.company.gamestore.respositories.TshirtRespository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
-import org.junit.platform.engine.TestExecutionResult;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -45,7 +44,7 @@ public class TshirtControllerTest {
 
 
         mockMVC.perform(
-                put("/tshirt")
+                put("/tshirts")
                 .content(tshirtJson)
                 .contentType(MediaType.APPLICATION_JSON)
                 )
@@ -67,7 +66,7 @@ public class TshirtControllerTest {
     public void shouldGetTshirtById() throws Exception {
 
         mockMVC.perform(
-                        get("/tshirt/1")
+                        get("/tshirts/1")
                 )
                 .andDo(print())
                 .andExpect(status().isOk());
