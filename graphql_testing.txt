@@ -1,0 +1,85 @@
+query {
+  findAllGames {
+    id
+    title
+    esrbRating
+    description
+    price
+    studio
+    quantity
+  }
+  
+    findGamesByStudio(studio: "Riot") {
+    id
+    title
+    esrbRating
+    description
+    price
+    studio
+    quantity
+  }
+  
+  findGamesByTitle(title: "Valorant")
+  {
+    id
+    title
+    esrbRating
+    description
+    price
+    studio
+    quantity
+  }
+  
+  findGamesByEsrbRating(esrb: "Everyone")
+  {
+    id
+    title
+    esrbRating
+    description
+    price
+    studio
+    quantity
+  }
+  
+  findGameById(id: 1) {
+    id
+    title
+    esrbRating
+    description
+    price
+    studio
+    quantity
+  }
+  
+  #################################################
+  
+  findAllConsoles {
+    id
+    model
+    manufacturer
+    memoryAmount
+    processor
+    price
+    quantity
+  }
+  
+  findConsoleById(id: 2) {
+    id
+    model
+    manufacturer
+    memoryAmount
+    processor
+    price
+    quantity
+  }
+  
+  findConsolesByManufacturer(manufacturer: "Sony") {
+    id
+    model
+    manufacturer
+    memoryAmount
+    processor
+    price
+    quantity
+  }
+}
