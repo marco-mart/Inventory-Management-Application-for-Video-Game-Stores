@@ -2,7 +2,6 @@ package com.company.gamestore.repositories;
 
 
 import com.company.gamestore.models.Tshirt;
-import com.company.gamestore.respositories.TshirtRespository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,11 +21,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TshirtRepositoryTest {
     @Autowired
-    TshirtRespository TshirtRespository;
+    com.company.gamestore.repositories.TshirtRepository TshirtRepository;
 
     @Before
     public void Setup() throws Exception {
-        TshirtRespository.deleteAll();
+        TshirtRepository.deleteAll();
     }
 
     @Test
@@ -42,9 +41,9 @@ public class TshirtRepositoryTest {
         tshirt.setQuantity(15);
 
 
-        tshirt = TshirtRespository.save(tshirt);
+        tshirt = TshirtRepository.save(tshirt);
 
-        Optional<Tshirt> tshirt1 = TshirtRespository.findById(tshirt.getId());
+        Optional<Tshirt> tshirt1 = TshirtRepository.findById(tshirt.getId());
 
         //Assert
         assertEquals(tshirt,tshirt1.get());
@@ -64,9 +63,9 @@ public class TshirtRepositoryTest {
         tshirt.setQuantity(15);
 
 
-        tshirt = TshirtRespository.save(tshirt);
+        tshirt = TshirtRepository.save(tshirt);
 
-        Optional<Tshirt> tshirt1 = TshirtRespository.findById(tshirt.getId());
+        Optional<Tshirt> tshirt1 = TshirtRepository.findById(tshirt.getId());
 
         assertEquals(tshirt,tshirt1.get());
 
@@ -85,8 +84,8 @@ public class TshirtRepositoryTest {
         tshirt.setQuantity(15);
 
         //Act
-        tshirt = TshirtRespository.save(tshirt);
-        List<Tshirt> gameList = TshirtRespository.findAll();
+        tshirt = TshirtRepository.save(tshirt);
+        List<Tshirt> gameList = TshirtRepository.findAll();
 
 
 
@@ -108,11 +107,11 @@ public class TshirtRepositoryTest {
         tshirt.setPrice(price);
         tshirt.setQuantity(15);
 
-       tshirt = TshirtRespository.save(tshirt);
+       tshirt = TshirtRepository.save(tshirt);
 
         tshirt.setColor("Blue");
 
-        Tshirt newTshirt = TshirtRespository.save(tshirt);
+        Tshirt newTshirt = TshirtRepository.save(tshirt);
 
         //Assert
         assertEquals(tshirt,newTshirt);
@@ -132,11 +131,11 @@ public class TshirtRepositoryTest {
         tshirt.setQuantity(15);
 
         //Act
-        tshirt = TshirtRespository.save(tshirt  );
+        tshirt = TshirtRepository.save(tshirt  );
 
-        TshirtRespository.deleteById(tshirt.getId());
+        TshirtRepository.deleteById(tshirt.getId());
 
-        Optional<Tshirt> tshirt1 = TshirtRespository.findById(tshirt.getId());
+        Optional<Tshirt> tshirt1 = TshirtRepository.findById(tshirt.getId());
 
         //Assert
         assertFalse(tshirt1.isPresent());
@@ -154,9 +153,9 @@ public class TshirtRepositoryTest {
         tshirt.setPrice(price);
         tshirt.setQuantity(15);
 
-        tshirt = TshirtRespository.save(tshirt);
+        tshirt = TshirtRepository.save(tshirt);
 
-        List<Tshirt> tshirtsList = TshirtRespository.findAllBySize("L");
+        List<Tshirt> tshirtsList = TshirtRepository.findAllBySize("L");
 
         //Assert
         assertEquals(tshirtsList.size(),0);
@@ -176,9 +175,9 @@ public class TshirtRepositoryTest {
         tshirt.setQuantity(15);
 
         //Act
-        tshirt = TshirtRespository.save(tshirt);
+        tshirt = TshirtRepository.save(tshirt);
 
-        List<Tshirt> tshirtList = TshirtRespository.findAllByColor("Yellow");
+        List<Tshirt> tshirtList = TshirtRepository.findAllByColor("Yellow");
 
         //Assert
         assertEquals(tshirtList.size(),0);
