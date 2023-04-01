@@ -2,6 +2,7 @@ package com.company.gamestore.controllers;
 
 import com.company.gamestore.models.Invoice;
 import com.company.gamestore.repositories.InvoiceRepository;
+import com.company.gamestore.service.ServiceLayer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class InvoiceController
 {
 
     @Autowired
-    InvoiceRepository invoiceRepository;
+    ServiceLayer serviceLayer;
 
     /**
      * Get Invoice by Id
@@ -33,8 +34,7 @@ public class InvoiceController
     @ResponseStatus(HttpStatus.OK)
     public Invoice getInvoiceById(@PathVariable int id)
     {
-        Optional<Invoice> invoice = invoiceRepository.findById(id);
-        return invoice.isPresent() ? invoice.get() : null;
+        return serviceLayer.findInvoiceById(id);
     }
 
     /**
@@ -53,8 +53,7 @@ public class InvoiceController
     @ResponseStatus(HttpStatus.OK)
     public List<Invoice> getAllInvoice()
     {
-        Optional<List<Invoice>> invoices = Optional.of(invoiceRepository.findAll());
-        return invoices.isPresent() ? invoices.get() : null;
+        return serviceLayer.findAllInvoices();
     }
 
     /**
@@ -73,8 +72,7 @@ public class InvoiceController
     @ResponseStatus(HttpStatus.OK)
     public List<Invoice> getInvoicesByCustomerName(@PathVariable String name)
     {
-        Optional<List<Invoice>> invoicesByCustomerName = Optional.of(invoiceRepository.findAllByName(name));
-        return invoicesByCustomerName.isPresent() ? invoicesByCustomerName.get() : null;
+        return serviceLayer.findAllInvoicesByName(name);
     }
 
 
@@ -92,7 +90,7 @@ public class InvoiceController
     @ResponseStatus(HttpStatus.CREATED)
     public Invoice createInvoice(@RequestBody @Valid Invoice invoice)
     {
-        return invoiceRepository.save(invoice);
+        return serviceLayer.saveInvoice(invoice);
     }
 
 
