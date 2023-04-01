@@ -1,7 +1,6 @@
 package com.company.gamestore.controllers;
 
 import com.company.gamestore.models.Tshirt;
-import com.company.gamestore.respositories.TshirtRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,22 +12,22 @@ import java.util.Optional;
 public class Tshirtcontroller {
 
     @Autowired
-    TshirtRespository tshirtRespository;
+    com.company.gamestore.repositories.TshirtRepository tshirtRepository;
 
     @PostMapping("/tshirts")
     @ResponseStatus(HttpStatus.CREATED)
     public Tshirt addTshirt (@RequestBody Tshirt tshirt){
-        return tshirtRespository.save(tshirt);
+        return tshirtRepository.save(tshirt);
     }
 
     @PutMapping("/tshirts")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateTshirt(@RequestBody Tshirt tshirt){
-        tshirtRespository.save(tshirt);
+        tshirtRepository.save(tshirt);
     }
     @GetMapping("/tshirts/{id}")
     public Tshirt findTshirtById(@PathVariable int id){
-        Optional <Tshirt> tshirtFromRepo = tshirtRespository.findById(id);
+        Optional <Tshirt> tshirtFromRepo = tshirtRepository.findById(id);
         if(tshirtFromRepo.isPresent()){
             return tshirtFromRepo.get();
         } else{
@@ -39,25 +38,25 @@ public class Tshirtcontroller {
     @DeleteMapping("/tshirts/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTshirt(@PathVariable int id){
-        tshirtRespository.deleteById(id);
+        tshirtRepository.deleteById(id);
     }
 
     @GetMapping("/tshirts")
     @ResponseStatus(HttpStatus.OK)
     public List<Tshirt> findAllTshirt(){
-        return tshirtRespository.findAll();
+        return tshirtRepository.findAll();
     }
 
     @GetMapping("/tshirts/size/{size}")
     @ResponseStatus(HttpStatus.OK)
     public List<Tshirt> getTshirtBySize(@PathVariable String size){
-        return tshirtRespository.findAllBySize(size);
+        return tshirtRepository.findAllBySize(size);
     }
 
     @GetMapping("/tshirts/color/{color}")
     @ResponseStatus(HttpStatus.OK)
     public List<Tshirt> getTshirtByColor(@PathVariable String color) {
-        return tshirtRespository.findAllByColor(color);
+        return tshirtRepository.findAllByColor(color);
     }
 }
 

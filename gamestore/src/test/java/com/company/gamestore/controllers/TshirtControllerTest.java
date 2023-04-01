@@ -1,7 +1,6 @@
 package com.company.gamestore.controllers;
 
 import com.company.gamestore.models.Tshirt;
-import com.company.gamestore.respositories.TshirtRespository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +25,7 @@ public class TshirtControllerTest {
     private MockMvc mockMVC;
 
     @MockBean
-    TshirtRespository Tshirtrepo;
+    com.company.gamestore.repositories.TshirtRepository Tshirtrepo;
 
     private ObjectMapper mapper = new ObjectMapper();
 
