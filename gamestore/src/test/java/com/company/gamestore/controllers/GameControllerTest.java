@@ -2,6 +2,7 @@ package com.company.gamestore.controllers;
 
 import com.company.gamestore.models.Game;
 import com.company.gamestore.repositories.GameRepository;
+import com.company.gamestore.service.ServiceLayer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +27,7 @@ public class GameControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    GameRepository GameRepo;
+    private ServiceLayer serviceLayer;
 
     private ObjectMapper mapper = new ObjectMapper();
 

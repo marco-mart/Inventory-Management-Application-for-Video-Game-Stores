@@ -1,6 +1,7 @@
 package com.company.gamestore.controllers;
 
 import com.company.gamestore.models.Tshirt;
+import com.company.gamestore.service.ServiceLayer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import javax.xml.ws.Service;
 import java.math.BigDecimal;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -25,7 +27,7 @@ public class TshirtControllerTest {
     private MockMvc mockMVC;
 
     @MockBean
-    com.company.gamestore.repositories.TshirtRepository Tshirtrepo;
+    private ServiceLayer serviceLayer;
 
     private ObjectMapper mapper = new ObjectMapper();
 
