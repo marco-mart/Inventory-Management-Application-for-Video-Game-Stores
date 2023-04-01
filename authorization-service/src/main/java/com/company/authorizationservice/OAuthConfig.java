@@ -23,11 +23,11 @@ public class OAuthConfig  extends AuthorizationServerConfigurerAdapter {
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
         clients.inMemory()
-                .withClient("html5")
+                .withClient("game_store")
                 .authorizedGrantTypes("password")
-                .scopes("ROLE_USER", "ROLE_MANAGER", "ROLE_ADMIN")
-                // the secret is "app_secret" hashed using BCrypt
-                .secret("$2a$10$0Mf57EA3kipR1ej14v/tpeZ5UvV7kmcym57hfztwF79seJc.ulnHS");
+                .scopes("ROLE_USER", "ROLE_ADMIN")
+                // the secret is "game_store_secret" hashed using BCrypt
+                .secret("$2y$10$mk/nL33PIpu4KM3n2R6aHOl7x7eWPqqIp1RO4K6ic/W1nDIEL/QCS");
     }
 
     @Override
