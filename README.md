@@ -48,7 +48,8 @@
 
 ---
 
-##Running the Project
+## Running the Project
+
 To run the project, follow these steps:
 
 1. Clone the repository
