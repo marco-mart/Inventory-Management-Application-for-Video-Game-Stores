@@ -48,6 +48,12 @@
 
 ---
 
+## Agile Development
+
+>The group used Agile methodology to plan and track the project. The group held regular stand-up meetings to discuss progress and any issues that arose. The group also used Trello to track tasks and ensure that everyone was on the same page. This allowed the group to quickly adapt to any changes or challenges that arose during the project.
+
+---
+
 ## Running the Project
 
 To run the project, follow these steps:
