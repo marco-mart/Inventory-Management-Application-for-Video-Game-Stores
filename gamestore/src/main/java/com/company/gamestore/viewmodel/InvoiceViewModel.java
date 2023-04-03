@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 public class InvoiceViewModel {
+    
     private Integer id;
 
     private String name;
@@ -22,7 +23,7 @@ public class InvoiceViewModel {
 
     private Integer quantity;
 
-   private BigDecimal subtotal;
+    private BigDecimal subtotal;
 
     private BigDecimal tax;
 
