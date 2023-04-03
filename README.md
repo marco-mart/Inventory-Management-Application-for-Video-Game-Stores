@@ -26,3 +26,9 @@
 ### Deployment
 - AWS RDS
 - CircleCI/CD
+
+## Java Project, Deployment, and Database Explanation
+
+>Java Project
+>This is a test for a drop down of he java project
+>what is used is this: this thsi
