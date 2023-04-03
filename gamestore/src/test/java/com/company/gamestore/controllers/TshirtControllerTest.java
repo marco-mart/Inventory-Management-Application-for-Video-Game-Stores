@@ -1,10 +1,9 @@
 package com.company.gamestore.controllers;
 
 import com.company.gamestore.models.Tshirt;
-import com.company.gamestore.respositories.TshirtRespository;
+import com.company.gamestore.service.ServiceLayer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
-import org.junit.platform.engine.TestExecutionResult;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -13,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import javax.xml.ws.Service;
 import java.math.BigDecimal;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -27,7 +27,7 @@ public class TshirtControllerTest {
     private MockMvc mockMVC;
 
     @MockBean
-    TshirtRespository Tshirtrepo;
+    private ServiceLayer serviceLayer;
 
     private ObjectMapper mapper = new ObjectMapper();
 
@@ -45,7 +45,7 @@ public class TshirtControllerTest {
 
 
         mockMVC.perform(
-                put("/tshirt")
+                put("/tshirts")
                 .content(tshirtJson)
                 .contentType(MediaType.APPLICATION_JSON)
                 )
@@ -67,7 +67,7 @@ public class TshirtControllerTest {
     public void shouldGetTshirtById() throws Exception {
 
         mockMVC.perform(
-                        get("/tshirt/1")
+                        get("/tshirts/1")
                 )
                 .andDo(print())
                 .andExpect(status().isOk());

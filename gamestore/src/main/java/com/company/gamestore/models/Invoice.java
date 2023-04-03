@@ -6,13 +6,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer",  "handler"})
 @Table(name = "invoice")
-public class Invoice
+public class Invoice implements Serializable
 {
     /**
      * Note: attributes without "NotNull" annotation is intentional,
