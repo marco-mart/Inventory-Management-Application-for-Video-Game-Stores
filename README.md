@@ -7,16 +7,20 @@
 ---
 
 ## Technologies Used: 
+
+### Development
 - Spring Boot
 - Spring MVC
 - JPA
 - JSR303 Validation
 - GraphQL
-- AWS RDS
-- CircleCI/CD
 - Exception Handling
 
-## Testing
+### Testing
 - JUnit Testing / Integration Testing
 - MockMVC
 - Mockito
+
+### Deployment
+- AWS RDS
+- CircleCI/CD
