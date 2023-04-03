@@ -1,7 +1,6 @@
 package com.company.gamestore.controllers;
 
 import com.company.gamestore.models.Game;
-import com.company.gamestore.repositories.GameRepository;
 import com.company.gamestore.service.ServiceLayer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;

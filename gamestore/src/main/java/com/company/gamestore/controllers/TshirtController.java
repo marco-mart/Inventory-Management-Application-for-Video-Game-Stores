@@ -7,10 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-public class Tshirtcontroller {
+public class TshirtController {
 
 
     @Autowired
@@ -28,6 +27,7 @@ public class Tshirtcontroller {
         serviceLayer.saveTshirt(tshirt);
     }
     @GetMapping("/tshirts/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Tshirt findTshirtById(@PathVariable int id){
         return serviceLayer.findTshirtById(id);
     }
