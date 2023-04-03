@@ -2,7 +2,8 @@
 # Netflix Pathways BootCamp - Advanced Java
 
 
->This is the final project for the Spring 2023 Netflix Pathways Bootcamp. 
+>This is the final project for the Spring 2023 Netflix Pathways Bootcamp.
+ 
 >Contributors: Marco Martinez, Tremayne Duffus, Jonathan Sanchez, Bridget Torres
 
 ---
