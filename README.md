@@ -1,4 +1,4 @@
-![Netflix Banner](Netflix_Final_Projec.png)
+![Netflix Banner](Netflix_Final_Proje.png)
 # Netflix Pathways BootCamp - Advanced Java
 
 
