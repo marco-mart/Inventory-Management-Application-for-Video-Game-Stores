@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import javax.swing.text.View;
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Optional;
@@ -96,132 +97,129 @@ public class ServiceLayer
 
         BigDecimal subtotal = new BigDecimal("0.00");
 
-        try{
-
-            if (InvoiceView.getItemType().equals("Console") || InvoiceView.getItemType().equals("console")){
-
-                Optional<Console> getConsole = consoleRepository.findById(InvoiceView.getItemId());
 
 
-                if (!getConsole.isPresent()){
-                    throw new InputMismatchException();
-                }
+        if (InvoiceView.getItemType().equals("Console") || InvoiceView.getItemType().equals("console")){ //check item type
 
-                Console console = getConsole.get();
+            Optional<Console> getConsole = consoleRepository.findById(InvoiceView.getItemId()); //looking up item in database
 
-                if (InvoiceView.getQuantity() > console.getQuantity() || InvoiceView.getQuantity() < 1){
-                    throw new InputMismatchException();
-                } else {
-                    console.setQuantity(console.getQuantity() - InvoiceView.getQuantity());
 
-                }
-
-                subtotal = console.getPrice();
-                invoice.setUnitPrice(console.getPrice());
-
-                BigDecimal BigQuantity = new BigDecimal(console.getQuantity());
-
-                subtotal = subtotal.multiply(BigQuantity);
-
-                consoleRepository.save(console);
-
+            if (!getConsole.isPresent()){ //throw error if item is not present
+                throw new IllegalArgumentException("Console not available");
             }
-            else if(InvoiceView.getItemType().equals("Game")  || InvoiceView.getItemType().equals("game")) {
 
-                Optional<Game> getGame = gameRepository.findById(InvoiceView.getItemId());
+            Console console = getConsole.get();
 
-                if (!getGame.isPresent()){
-                    throw new InputMismatchException();
-                }
-
-                Game game = getGame.get();
-
-                if (InvoiceView.getQuantity() > game.getQuantity() || InvoiceView.getQuantity() < 1){
-                    throw new InputMismatchException();
-                } else {
-                    game.setQuantity(game.getQuantity() - InvoiceView.getQuantity());
-                }
-
-                subtotal = game.getPrice();
-                invoice.setUnitPrice(game.getPrice());
-
-                BigDecimal BigQuantity = new BigDecimal(game.getQuantity());
-
-                subtotal = subtotal.multiply(BigQuantity);
-
-                gameRepository.save(game);
-
-
-            } else if (InvoiceView.getItemType().equals("Tshirt")   || InvoiceView.getItemType().equals("tshirt")
-                    || InvoiceView.getItemType().equals("T-shirt")  || InvoiceView.getItemType().equals("t-shirt")){
-
-                Optional<Tshirt> getTshirt = tshirtRepository.findById(InvoiceView.getItemId());
-
-                if (!getTshirt.isPresent()){
-                  throw new InputMismatchException();
-                }
-
-                Tshirt tshirt = getTshirt.get();
-
-                if (InvoiceView.getQuantity() > tshirt.getQuantity() || InvoiceView.getQuantity() < 1){
-                    throw new InputMismatchException();
-                } else {
-                    tshirt.setQuantity(tshirt.getQuantity() - InvoiceView.getQuantity());
-                }
-
-                subtotal = tshirt.getPrice();
-                invoice.setUnitPrice(tshirt.getPrice());
-
-                BigDecimal BigQuantity = new BigDecimal(tshirt.getQuantity());
-
-                subtotal = subtotal.multiply(BigQuantity);
-
-                tshirtRepository.save(tshirt);
-
-
+            if (InvoiceView.getQuantity() > console.getQuantity() || InvoiceView.getQuantity() < 1){ //check if quantity asked for is available
+                throw new IllegalArgumentException("Not enough in store");
             } else {
-                throw new InputMismatchException();
+                console.setQuantity(console.getQuantity() - InvoiceView.getQuantity());
 
             }
+
+            subtotal = console.getPrice();  //price per unit
+            invoice.setUnitPrice(console.getPrice());
+
+            BigDecimal BigQuantity = new BigDecimal(InvoiceView.getQuantity());
+
+            subtotal = subtotal.multiply(BigQuantity); //price for all units
+
+            consoleRepository.save(console); //updating quantity in database
+
+        }
+        else if(InvoiceView.getItemType().equals("Game")  || InvoiceView.getItemType().equals("game")) { //check item type
+
+            Optional<Game> getGame = gameRepository.findById(InvoiceView.getItemId());//looking up item in database
+
+            if (!getGame.isPresent()){ //throw error if item is not present
+                throw new IllegalArgumentException("Game is not in store");
+            }
+
+            Game game = getGame.get();
+
+            if (InvoiceView.getQuantity() > game.getQuantity() || InvoiceView.getQuantity() < 1){//check if quantity asked for is available
+                throw new IllegalArgumentException("Not enough in store");
+            } else {
+                game.setQuantity(game.getQuantity() - InvoiceView.getQuantity());
+            }
+
+            subtotal = game.getPrice(); //price per unit
+            invoice.setUnitPrice(game.getPrice());
+
+            BigDecimal BigQuantity = new BigDecimal(InvoiceView.getQuantity());
+
+            subtotal = subtotal.multiply(BigQuantity);  //price for all units
+
+            gameRepository.save(game); //updating quantity in database
+
+
+        } else if (InvoiceView.getItemType().equals("Tshirt")   || InvoiceView.getItemType().equals("tshirt")
+                || InvoiceView.getItemType().equals("T-shirt")  || InvoiceView.getItemType().equals("t-shirt")){ //check item type
+
+            Optional<Tshirt> getTshirt = tshirtRepository.findById(InvoiceView.getItemId()); //looking up item in database
+
+            if (!getTshirt.isPresent()){ //throw error if item is not present
+              throw new IllegalArgumentException("Tshirt not in store");
+            }
+
+            Tshirt tshirt = getTshirt.get();
+
+            if (InvoiceView.getQuantity() > tshirt.getQuantity() || InvoiceView.getQuantity() < 1){//check if quantity asked for is available
+                throw new IllegalArgumentException("Not enough in store");
+            } else {
+                tshirt.setQuantity(tshirt.getQuantity() - InvoiceView.getQuantity());
+            }
+
+            subtotal = tshirt.getPrice(); //price per unit
+            invoice.setUnitPrice(tshirt.getPrice());
+
+            BigDecimal BigQuantity = new BigDecimal(InvoiceView.getQuantity());
+
+            subtotal = subtotal.multiply(BigQuantity); //price for all units
+
+            tshirtRepository.save(tshirt); //updating quantity in database
+
+
+        } else { //400 error if item type invaild
+            throw new IllegalArgumentException();
+
         }
 
-        catch (InputMismatchException e) {
 
-        }
 
         invoice.setSubtotal(subtotal);
 
         BigDecimal extraFee = new BigDecimal("0.00");
 
-        if (InvoiceView.getQuantity() > 10){
+        if (InvoiceView.getQuantity() > 10){ //extra fee for cart of more than 10 items
            extraFee = new BigDecimal("15.49");
         }
 
         Optional<Fee> ProcessingFee = feeRepository.findByProduct(InvoiceView.getItemType());
         BigDecimal fee = ProcessingFee.get().getFee();
         fee = fee.add(extraFee);
-        invoice.setProcessingFee(fee);
+        invoice.setProcessingFee(fee); //adding processing fee
 
         Optional<Tax> StateTax = taxRepository.findByState(InvoiceView.getState());
 
-        try {
-            if (!StateTax.isPresent()) {
-                throw new InputMismatchException();
-            }
+
+        if (!StateTax.isPresent()) { //checking if state is valid
+            throw new IllegalArgumentException("Invaild state");
         }
-        catch(InputMismatchException e) {}
 
 
         BigDecimal tax = StateTax.get().getRate();
-        invoice.setTax(tax);
+        invoice.setTax(tax); //adding tax
 
-        total = total.add(subtotal);
+        total = total.add(subtotal); //calculating total
         BigDecimal taxAmount = subtotal;
         taxAmount = taxAmount.multiply(tax);
         total = total.add(taxAmount);
         total = total.add(fee);
+        MathContext m = new MathContext(4); // precision for cents
+        total = total.round(m);
 
-        invoice.setTotal(total);
+        invoice.setTotal(total); //creating invoice data transfer object to enter data in database
         invoice.setName(InvoiceView.getName());
         invoice.setStreet(InvoiceView.getStreet());
         invoice.setCity(InvoiceView.getCity());
@@ -231,9 +229,10 @@ public class ServiceLayer
         invoice.setItemId(InvoiceView.getItemId());
         invoice.setQuantity(InvoiceView.getQuantity());
 
-        invoiceRepository.save(invoice);
+        invoiceRepository.save(invoice); //saving invoice
 
-        return InvoiceView;
+        InvoiceView.setTotal(total);
+        return InvoiceView; //returning view to user
     }
 
     // ------------------- GET BY ID -------------------------

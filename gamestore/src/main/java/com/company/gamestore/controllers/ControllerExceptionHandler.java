@@ -18,7 +18,7 @@ import java.util.List;
 @RestControllerAdvice
 public class ControllerExceptionHandler {
 
-    @ExceptionHandler(value = {MethodArgumentNotValidException.class})
+    @ExceptionHandler(value = {MethodArgumentNotValidException.class}) //for input validation from CRUD
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public ResponseEntity<List<CustomErrorResponse>> ValidationError(MethodArgumentNotValidException e) {
         // BindingResult holds the validation errors
@@ -40,11 +40,14 @@ public class ControllerExceptionHandler {
         return responseEntity;
     }
 
-    @ExceptionHandler(value = {InputMismatchException.class})
+    @ExceptionHandler(value = IllegalArgumentException.class) //for business logic validation
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public String InvoiceInputError(InputMismatchException e){
-
-        return "Invaild Input";
+    public ResponseEntity<CustomErrorResponse> handleGenericNotFoundException(IllegalArgumentException e) {
+        CustomErrorResponse error = new CustomErrorResponse(HttpStatus.UNPROCESSABLE_ENTITY.toString(), e.getMessage());
+        error.setStatus((HttpStatus.UNPROCESSABLE_ENTITY.value()));
+        error.setTimeStamp(LocalDateTime.now());
+        ResponseEntity<CustomErrorResponse> responseEntity = new ResponseEntity<>(error, HttpStatus.UNPROCESSABLE_ENTITY);
+        return responseEntity;
     }
 
 }
