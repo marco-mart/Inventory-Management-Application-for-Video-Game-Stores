@@ -1,6 +1,8 @@
 ![Netflix Banner](Netflix_Final_Proje.png)
 # Netflix Pathways BootCamp - Advanced Java
 
+# Video Presentation: https://www.youtube.com/watch?v=IjOIu3QAvX8 
+
 
 >This is the final project for the Spring 2023 Netflix Pathways Bootcamp.
  
